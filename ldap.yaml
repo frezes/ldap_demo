@@ -1,0 +1,24 @@
+# LDAP 测试配置（供 ldap_test.go / tools/ldapcheck 使用）
+# 用法：$env:LDAP_TEST_FILE = "D:\Workspace\practice\ldap\ldap.yaml"
+# 请替换成你自己的服务器与账号信息
+
+host: 192.168.1.10:389
+startTLS: false
+insecureSkipVerify: false
+readTimeout: 15000
+
+# 用于搜索用户的 manager 账号，需要有搜索权限
+managerDN: cn=admin,dc=example,dc=com
+managerPassword: your-manager-password
+
+# 用户搜索范围与过滤条件
+userSearchBase: ou=users,dc=example,dc=com
+userSearchFilter: (objectClass=person)
+loginAttribute: uid
+mailAttribute: mail
+
+# 以下为分组相关字段，当前认证流程用不到，可不填
+# groupSearchBase: ou=groups,dc=example,dc=com
+# groupSearchFilter: (objectClass=groupOfNames)
+# userMemberAttribute: memberOf
+# groupMemberAttribute: member
